@@ -1,5 +1,8 @@
 package com.orangeHrm.Tests;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -10,31 +13,32 @@ import com.ornageHrm.Page.LoginPage;
 import com.ornageHrm.Page.RecruitmentPage;
 
 public class RecruitmentPageTest extends TestBase {
-	LoginPage loginPage;
+	//LoginPage loginPage;
 	RecruitmentPage RecruitmentPage;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
 		intialisation();
-		loginPage= new LoginPage();
+	//	Alert alert = driver.switchTo().alert();
+	//	alert.accept();
 		RecruitmentPage = new RecruitmentPage();
-		//RecruitmentPage.configureLoginForm();
-		loginPage.clickLoginButton();
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 	}
 
-	@Test
+	@Test(alwaysRun = true)
 	public void test() {
+		RecruitmentPage.enterUserName();
+		RecruitmentPage.enterPassword();
+		RecruitmentPage.clickLoginButton();
 		RecruitmentPage.clickRecruitmentButton();
-		//Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewJobVacancy");
+		Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewJobVacancy");
 	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void after() {
-		driver.quit();
-		//@AfterMethod
-		//public void afterTest(ITestResult result) {
-		   // Throwable t = result.getThrowable();
-		    // with the object of t you can get the stacktrace and log it into your reporter
+		//driver.quit();
+		
 		}
 	}
 
