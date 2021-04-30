@@ -52,8 +52,7 @@ public class RecruitmentPage extends TestBase {
 	}
 
 	public void clickRecruitmentButton() {
-		
-		recruitmentButton.click();
+				recruitmentButton.click();
 	}
 
 	public void clickAddButon() {
@@ -98,13 +97,13 @@ public class RecruitmentPage extends TestBase {
 	}
 	
 	
-	public static void selectDateByJS(WebDriver driver, WebElement element, String dateValue) {
+	public  void selectDate(WebDriver driver, WebElement dateOfApplication, String dateValue) {
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
-		js.executeScript("arguments[0].setAttribute('value','" + dateValue + "');", element);
+		js.executeScript("arguments[0].setAttribute('value','" + dateValue + "');", dateOfApplication);
 	}
-		
+				
 	public void clickConsentToKeepDataCheckBox() {
-		
+		consentToKeepDataCheckBox.click();
 	}
 	public void clickSaveButton() {
 		saveButton.click();
@@ -116,7 +115,29 @@ public class RecruitmentPage extends TestBase {
 		candidateNameButton.sendKeys("Joyce K Aliyas");
 		select.selectByVisibleText("Joyce K Aliyas");
 	}
+	
 	public void clickSearchButton() {
 		searchButton.click();
+	}
+	public void allMethods() {
+		configureLoginForm();
+		clickRecruitmentButton();
+		clickAddButon();
+		clickCandidateFirstNameInputBox();
+		clickCandidateMiddleNameInputBox();
+		clickCandidateLastNameInputBox();
+		clickCandidateEmailNameInputBox();
+		clickcandidateContactNoInputBox();
+		clickJobVacancyDropdownBox();
+		clickResumeChooseButton();
+		clickKeyWordsInputBox();
+		clickCommentsInputBox();
+		selectDate( driver,  dateOfApplication,  dateValue);
+		clickConsentToKeepDataCheckBox();
+		clickSaveButton();
+		clickCandidatesButton();
+		clickCandidateNameButton();
+		clickSearchButton();
+		
 	}
 }

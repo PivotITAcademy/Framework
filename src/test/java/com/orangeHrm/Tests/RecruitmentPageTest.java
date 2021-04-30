@@ -19,8 +19,6 @@ public class RecruitmentPageTest extends TestBase {
 	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
 		intialisation();
-	//	Alert alert = driver.switchTo().alert();
-	//	alert.accept();
 		RecruitmentPage = new RecruitmentPage();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -28,16 +26,13 @@ public class RecruitmentPageTest extends TestBase {
 
 	@Test(alwaysRun = true)
 	public void test() {
-		RecruitmentPage.enterUserName();
-		RecruitmentPage.enterPassword();
-		RecruitmentPage.clickLoginButton();
-		RecruitmentPage.clickRecruitmentButton();
-		Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewJobVacancy");
+		RecruitmentPage.allMethods();
+		
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void after() {
-		//driver.quit();
+		driver.quit();
 		
 		}
 	}
