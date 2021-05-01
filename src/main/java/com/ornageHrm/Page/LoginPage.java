@@ -1,35 +1,47 @@
 package com.ornageHrm.Page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.orangeHrm.base.TestBase;
 
 public class LoginPage extends TestBase {
-
-	WebElement usernameInput = driver.findElement(By.cssSelector("#divUsername>input"));
-	WebElement passwordInput = driver.findElement(By.cssSelector("#divPassword>input"));
-	WebElement loginButton = driver.findElement(By.id("btnLogin"));
+	
+	@FindBy(css = "#divUsername>input")
+	WebElement usernameInput;
+	
+	@FindBy(css = "#divPassword>input")
+	WebElement passwordInput;
+	
+	@FindBy(id="btnLogin")
+	WebElement loginButton;
+	
+	public LoginPage() {
+	
+		PageFactory.initElements(driver, this);
+	}
+	
 
 	public void enterUserName() {
-		usernameInput.sendKeys("Admin");
+		usernameInput.sendKeys(prop.getProperty("username"));
 
 	}
 
 	public void enterPassword() {
-		passwordInput.sendKeys("admin123");
+		passwordInput.sendKeys(prop.getProperty("password"));
 	}
 
-	public void clickLoginButton() {
+	public DashBoardPage clickLoginButton() {
 		loginButton.click();
+		return new DashBoardPage();
 	}
 	
-	public void configureLoginForm() {
+	public DashBoardPage configureForm() {
 		enterUserName();
 		enterPassword();
-		clickLoginButton();
-
+		return clickLoginButton();
+		
 	}
 
 }
