@@ -9,8 +9,8 @@ import com.orangeHrm.base.TestBase;
 
 public class LeavePage extends TestBase {
 	
-	LoginPage loginPage;
-	DashBoardPage dashBoardPage;
+	//LoginPage loginPage;
+	//DashBoardPage dashBoardPage;
 	
 	@FindBy(id="calFromDate")
 	WebElement clickFromDate;

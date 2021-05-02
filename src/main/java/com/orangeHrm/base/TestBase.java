@@ -26,7 +26,7 @@ public class TestBase {
 		prop = new Properties();
 		try {
 			FileInputStream ip = new FileInputStream(
-					"F:\\Carbonite\\SeleniumProject\\src\\main\\java\\com\\orangeHrm\\config\\config.properties");
+					"C:\\Users\\Administrator\\git\\Framework\\src\\main\\java\\com\\orangeHrm\\config\\config.properties");
 			try {
 				prop.load(ip);
 			} catch (IOException e) {
