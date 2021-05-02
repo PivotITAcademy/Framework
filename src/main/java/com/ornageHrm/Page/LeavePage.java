@@ -35,6 +35,7 @@ public class LeavePage extends TestBase {
 	
 	
 	public LeavePage() {
+		waitForDocumentCompleteState(15);
 		PageFactory.initElements(driver, this);
 		
 	}

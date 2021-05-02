@@ -7,28 +7,35 @@ import org.openqa.selenium.support.PageFactory;
 import com.orangeHrm.base.TestBase;
 
 public class DashBoardPage extends TestBase {
-	
-	@FindBy(id="menu_recruitment_viewRecruitmentModule")
+
+	@FindBy(id = "menu_recruitment_viewRecruitmentModule")
 	WebElement recruitmentButton;
-	
-	@FindBy(id="menu_leave_viewLeaveModule")
+
+	@FindBy(id = "menu_leave_viewLeaveModule")
 	WebElement leaveButton;
-	
+	@FindBy(css = "#menu_directory_viewDirectory b")
+	WebElement directory;
+
 	public DashBoardPage() {
-		
+		waitForDocumentCompleteState(15);
 		PageFactory.initElements(driver, this);
-		
+
 	}
-	
+
 	public RecruitmentPage clickRecruitmentButton() {
 		recruitmentButton.click();
 		return new RecruitmentPage();
 	}
-	
+
 	public LeavePage clickLeavePage() {
 		leaveButton.click();
 		return new LeavePage();
+
 	}
-	
+
+	public ViewDirectoryPage clickdirectoryPageButton() {
+		directory.click();
+		return new ViewDirectoryPage();
+	}
 
 }
