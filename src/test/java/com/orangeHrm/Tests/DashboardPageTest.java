@@ -1,5 +1,6 @@
 package com.orangeHrm.Tests;
 
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -38,5 +39,6 @@ public class DashboardPageTest extends TestBase {
 	public void quit() {	
 		driver.quit();
 	}
+
 
 }

@@ -48,8 +48,7 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	@BeforeClass
 	public void LoggerSetUp() {
 		logger = Logger.getLogger(TestBase.class);
@@ -83,7 +82,7 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 
 	}
-	
+
 	public void waitForDocumentCompleteState(int secondsToWait) {
 		new WebDriverWait(driver, secondsToWait).until((ExpectedCondition<Boolean>) wd -> {
 
@@ -109,6 +108,7 @@ public class TestBase {
 		} catch (WebDriverException e) {
 			return null;
 		}
+
 
 	}
 
