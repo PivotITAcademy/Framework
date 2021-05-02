@@ -37,6 +37,7 @@ public class ViewDirectoryPage extends TestBase {
 	public void clickSearchButton() {
 
 		search.click();
+
 	}
 
 	public boolean isEmployeeCanadian() {
