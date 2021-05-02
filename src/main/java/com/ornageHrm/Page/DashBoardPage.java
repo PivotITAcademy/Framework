@@ -15,7 +15,7 @@ public class DashBoardPage extends TestBase {
 	WebElement leaveButton;
 	
 	public DashBoardPage() {
-		
+		waitForDocumentCompleteState(15);
 		PageFactory.initElements(driver, this);
 		
 	}

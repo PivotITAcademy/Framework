@@ -28,6 +28,11 @@ public class DashboardPageTest extends TestBase {
 		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
 	}
 	
+	@Test
+	public void failThisTest() {
+		Assert.assertEquals(true, false);
+	}
+	
 	
 	@AfterMethod
 	public void quit() {	
