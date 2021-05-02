@@ -1,17 +1,17 @@
 package com.orangeHrm.Tests;
 
-
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.orangeHrm.base.TestBase;
 import com.ornageHrm.Page.DashBoardPage;
+import com.ornageHrm.Page.LeavePage;
 import com.ornageHrm.Page.LoginPage;
 
-public class DashboardPageTest extends TestBase {
-	
+public class LeavePageTest extends TestBase {
+
+	LeavePage leavePage;
 	DashBoardPage dashBoardPage;
 	LoginPage loginPage;
 	
@@ -19,26 +19,21 @@ public class DashboardPageTest extends TestBase {
 	public void beforeMethod() {
 		intialisation();
 		loginPage=new LoginPage();
-		loginPage.enterUserName();
-		loginPage.enterPassword();
-		dashBoardPage=loginPage.clickLoginButton();	
+		dashBoardPage=loginPage.configureForm();
+		leavePage=dashBoardPage.clickLeavePage();
 	}
 	
 	@Test
-	public void verifyPageUrl() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
-	}
-	
-	@Test
-	public void failThisTest() {
-		Assert.assertEquals(true, false);
+	public void search() {
+		leavePage.searchUsingDate();
 	}
 	
 	
 	@AfterMethod
-	public void quit() {	
+	public void quitDriver() {
 		driver.quit();
 	}
-
-
+	
+	
+	
 }

@@ -20,7 +20,7 @@ public class ViewDirectoryPageTest extends TestBase {
 		intialisation();
 		loginpage = new LoginPage();
 		dashboardpage = new DashBoardPage();
-		loginpage.configureLoginForm();
+		loginpage.configureForm();
 		directoryPage = dashboardpage.clickdirectoryPageButton();
 
 	}

@@ -21,7 +21,9 @@ public class LoginPageTest extends TestBase {
 	@Test
 	public void signInTest() {
 
-		loginPage.configureLoginForm();
+		loginPage.enterUserName();
+		loginPage.enterPassword();
+		loginPage.clickLoginButton();
 		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
 	}
 
