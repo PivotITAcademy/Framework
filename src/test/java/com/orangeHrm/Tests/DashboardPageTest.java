@@ -1,5 +1,6 @@
 package com.orangeHrm.Tests;
 
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,10 +29,16 @@ public class DashboardPageTest extends TestBase {
 		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
 	}
 	
+	@Test
+	public void failThisTest() {
+		Assert.assertEquals(true, false);
+	}
+	
 	
 	@AfterMethod
 	public void quit() {	
 		driver.quit();
 	}
+
 
 }

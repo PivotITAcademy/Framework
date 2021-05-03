@@ -18,7 +18,7 @@ public class LoginPage extends TestBase {
 	WebElement loginButton;
 	
 	public LoginPage() {
-	
+		waitForDocumentCompleteState(15);
 		PageFactory.initElements(driver, this);
 	}
 	

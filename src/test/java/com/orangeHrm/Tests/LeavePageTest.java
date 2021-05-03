@@ -31,7 +31,7 @@ public class LeavePageTest extends TestBase {
 	
 	@AfterMethod
 	public void quitDriver() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	
