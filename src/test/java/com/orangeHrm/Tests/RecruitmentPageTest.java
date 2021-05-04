@@ -28,7 +28,7 @@ public class RecruitmentPageTest extends TestBase {
 	public void test() {
 		recruitmentPage.configureAddCandidate();
 		Assert.assertEquals(driver.findElement(By.id("resultTable")).getText().contains("Joyce"), true);
-		
+
 	}
 
 	@AfterMethod

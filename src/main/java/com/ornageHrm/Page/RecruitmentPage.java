@@ -1,14 +1,16 @@
 package com.ornageHrm.Page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import com.orangeHrm.base.TestBase;
 
 public class RecruitmentPage extends TestBase {
+	
 	@FindBy(id = "btnAdd")
 	WebElement addButton;
 
@@ -29,11 +31,9 @@ public class RecruitmentPage extends TestBase {
 
 	@FindBy(css = "input[type='text'][id='addCandidate_contactNo']")
 	WebElement contactNoInputBox;
-	
-	@FindBy(css ="select[name='addCandidate[vacancy]'][id='addCandidate_vacancy']")
-	WebElement JobVacancyDropDown;
 
-	
+	@FindBy(css = "select[name='addCandidate[vacancy]'][id='addCandidate_vacancy']")
+	WebElement JobVacancyDropDown;
 
 	@FindBy(css = "input[type='file'][id='addCandidate_resume']")
 	WebElement resumeUpload;
@@ -41,11 +41,17 @@ public class RecruitmentPage extends TestBase {
 	@FindBy(css = "input[type='text'][id='addCandidate_keyWords']")
 	WebElement keywordsInputBox;
 
-	@FindBy(xpath  = "//textarea[@name='addCandidate[comment]']")
+	@FindBy(xpath = "//textarea[@name='addCandidate[comment]']")
 	WebElement commentsInputBox;
 
+	@FindBy(xpath = "//input[@id='addCandidate_appliedDate']")
+	WebElement calender;
+
+	@FindBy(xpath = "//input[@id='addCandidate_consentToKeepData']")
+	WebElement consentCheckBox;
+
 	@FindBy(id = "resultTable")
-	WebElement resultTable; 
+	WebElement resultTable;
 
 	public RecruitmentPage() {
 		PageFactory.initElements(driver, this);
@@ -92,14 +98,22 @@ public class RecruitmentPage extends TestBase {
 		commentsInputBox.sendKeys("Thank You");
 	}
 
-	public void clickSaveButton() {
-		saveButton.click();
+	public void calenderInput() {
+		String dateValue = "2020-12-02";
+		selectDateByJS(driver, calender, dateValue);
 	}
 
-	public String getResultTable() {
-		String result = resultTable.getText();
-		System.out.println(result);
-		return result;
+	public void selectDateByJS(WebDriver driver, WebElement element, String dateValue) {
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		js.executeScript("arguments[0].setAttribute('value','" + dateValue + "');", element);
+	}
+
+	public void clickConsentCheckBox() {
+		consentCheckBox.click();
+	}
+
+	public void clickSaveButton() {
+		saveButton.click();
 	}
 
 	public void configureAddCandidate() {
@@ -113,8 +127,9 @@ public class RecruitmentPage extends TestBase {
 		clickResumeUpload();
 		clickKeywordsInputBox();
 		clickCommentsInputBox();
+		calenderInput();
+		clickConsentCheckBox();
 		clickSaveButton();
-		//getResultTable();
 
 	}
 }
