@@ -54,6 +54,7 @@ public class RecruitmentPage extends TestBase {
 	WebElement resultTable;
 
 	public RecruitmentPage() {
+		waitForDocumentCompleteState(15);
 		PageFactory.initElements(driver, this);
 	}
 
@@ -115,7 +116,10 @@ public class RecruitmentPage extends TestBase {
 	public void clickSaveButton() {
 		saveButton.click();
 	}
-
+	public String checkResultTable() {
+		String result=resultTable.getText();
+		return result;
+	}
 	public void configureAddCandidate() {
 		clickAddButton();
 		clickCandidateFirstNameInputBox();
