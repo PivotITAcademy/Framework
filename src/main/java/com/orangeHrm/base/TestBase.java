@@ -35,7 +35,7 @@ public class TestBase {
 		prop = new Properties();
 		try {
 			FileInputStream ip = new FileInputStream(
-					"C:\\Users\\dr_su\\git\\Framework\\src\\main\\java\\com\\orangeHrm\\config\\config.properties");
+					"./src\\main\\java\\com\\orangeHrm\\config\\config.properties");
 			try {
 				prop.load(ip);
 			} catch (IOException e) {
