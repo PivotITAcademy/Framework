@@ -101,14 +101,13 @@ public class TestBase {
 	}
 
 	private String getDocumentReadyState() {
-		jse=(JavascriptExecutor)driver;
+		jse = (JavascriptExecutor) driver;
 		try {
 			return jse.executeScript("return document.readyState").toString();
 
 		} catch (WebDriverException e) {
 			return null;
 		}
-
 
 	}
 
