@@ -1,13 +1,16 @@
 package com.ornageHrm.Page;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import com.orangeHrm.base.TestBase;
 
 public class LeavePage extends TestBase {
+
+	LoginPage loginPage;
+	DashBoardPage dashBoardPage;
 
 	@FindBy(id = "calFromDate")
 	WebElement clickFromDate;
@@ -29,6 +32,18 @@ public class LeavePage extends TestBase {
 
 	@FindBy(css = "select[class='ui-datepicker-month']")
 	WebElement selectWebElement;
+
+	@FindBy(id = "resultTable")
+	WebElement resultTable;
+
+	@FindBy(css = "#resultTable tr:nth-of-type(1) img[alt='Edit']")
+	WebElement commentCheckBox;
+
+	@FindBy(id = "commentContainer-66")
+	WebElement commentDisplay;
+
+	@FindBy(id = "select_leave_action_66")
+	WebElement selectActionDropdown;
 
 	public LeavePage() {
 		waitForDocumentCompleteState(15);
@@ -73,6 +88,37 @@ public class LeavePage extends TestBase {
 		clickLastDate();
 		selectCheckBox();
 		clickSearchButton();
+	}
+
+	public boolean isBoxVisible() {
+		boolean check = commentCheckBox.isDisplayed();
+		return check;
+	}
+
+	public DialogueBox navigateToDialogueBox() {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", resultTable);
+		jse.executeScript("arguments[0].click();", commentCheckBox);
+		return new DialogueBox();
+	}
+
+	public String displayComment() {
+		String displayedComment = commentDisplay.getText();
+		return displayedComment;
+	}
+
+	public void selectAction() {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", resultTable);
+		jse.executeScript("arguments[0].click();", selectActionDropdown);
+		Select dropdown = new Select(selectActionDropdown);
+		dropdown.selectByVisibleText("Cancel");
+
+	}
+
+	public boolean displayAction() {
+		boolean displayedAction = selectActionDropdown.isEnabled();
+		return displayedAction;
 	}
 
 }

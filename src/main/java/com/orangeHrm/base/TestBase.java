@@ -35,7 +35,7 @@ public class TestBase {
 		prop = new Properties();
 		try {
 			FileInputStream ip = new FileInputStream(
-					"C:\\Users\\Administrator\\git\\Framework\\src\\main\\java\\com\\orangeHrm\\config\\config.properties");
+					"./src\\main\\java\\com\\orangeHrm\\config\\config.properties");
 			try {
 				prop.load(ip);
 			} catch (IOException e) {
@@ -101,14 +101,13 @@ public class TestBase {
 	}
 
 	private String getDocumentReadyState() {
-		jse=(JavascriptExecutor)driver;
+		jse = (JavascriptExecutor) driver;
 		try {
 			return jse.executeScript("return document.readyState").toString();
 
 		} catch (WebDriverException e) {
 			return null;
 		}
-
 
 	}
 
