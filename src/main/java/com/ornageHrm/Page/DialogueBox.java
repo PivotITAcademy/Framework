@@ -3,12 +3,14 @@ package com.ornageHrm.Page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.orangeHrm.base.TestBase;
 
 public class DialogueBox extends TestBase {
 
-	@FindBy(xpath = "//div[@id='commentDialog']// textarea[@id='leaveComment']")
+	@FindBy(css = "form#frmCommentSave>textarea#leaveComment")
 	WebElement commentInputBox;
 
 	@FindBy(id = "commentSave")
@@ -20,8 +22,11 @@ public class DialogueBox extends TestBase {
 	}
 	
 	public void inputComment() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(commentInputBox));
 		commentInputBox.click();
-		commentInputBox.sendKeys("Thank You");
+		commentInputBox.sendKeys("Please accept");
+		
 	}
 	
 	public LeavePage saveComment() {
