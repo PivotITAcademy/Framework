@@ -37,7 +37,7 @@ public class LeavePageTest extends TestBase {
 		leavePage.navigateToDialogueBox();
 		DialogueBox dialogueBox = new DialogueBox();
 		dialogueBox.submitComments();
-		Assert.assertEquals(leavePage.displayComment(), "Thank You");
+		Assert.assertEquals(leavePage.displayComment(), "Please accept");
 	}
 
 	@Test
